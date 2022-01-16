@@ -2,98 +2,119 @@ import { TargetProp } from 'types/target'
 
 export const homeTargets: TargetProp[] = [
   {
-    content: {
+    id: 'fdsvfdg',
+    owner: {
       id: '1234',
-      owner: 'Mateo Alvarez',
-      title: 'Ir a un restaurant',
-      date: 'Mar. 18:00hs',
-      description:
-        'Unas pizzas en Panda bar y despues nos vamos para la casa de Pedro!',
-      members: [
+      name: 'Mateo Alvarez',
+      email: 'alvarez.fing@gmail.com',
+      image: 'http://placehold.it/40',
+    },
+    ownerId: '123gfdsgf4',
+    title: 'Noche de FIFA',
+    date: '2022-01-20 20:15:00',
+    description: 'Me consegui el nuevo FIFA, vienen y sale torneo?',
+    members: {
+      users: [
         {
-          user: {
-            name: 'Mateo Alvarez',
-            email: '',
-            image: 'http://placehold.it/40',
-          },
+          id: '12fdgsdfg34',
+          name: 'Mateo Alvarez',
+          email: 'alvarez.fing@fmail.com',
+          image: 'avatars/avatar1.jpg',
         },
         {
-          user: {
-            name: 'Fernando Gonzalez',
-            email: '',
-            image: 'http://placehold.it/40',
-          },
+          id: '12fdgerh34',
+          name: 'Mateo Alvarez',
+          email: 'alvarez.fing@fmail.com',
+          image: 'avatars/avatar2.jpg',
         },
         {
-          user: {
-            name: 'Matthew D. Brown',
-            email: '',
-            image: 'http://placehold.it/40',
-          },
+          id: '123reserh4',
+          name: 'Mateo Alvarez',
+          email: 'alvarez.fing@fmail.com',
+          image: 'avatars/avatar3.jpg',
         },
       ],
     },
   },
   {
-    content: {
-      id: 'ffdsfa',
-      owner: 'Mateo Alvarez',
-      title: 'Noche de Overwatch',
-      date: 'Mar. 22:00hs',
-      description: 'Unas partidas cortas',
-      members: [
+    id: '1ddrhresa234',
+    owner: {
+      id: '12rehserh34',
+      name: 'Mateo Alvarez',
+      email: 'alvarez.fing@gmail.com',
+      image: 'avatars/avatar3.jpg',
+    },
+    ownerId: '1sfsrehsd234',
+    title: 'Ir al cine',
+    date: '2022-01-20 21:13:00',
+    description: 'Podriamos ir a ver al Hombre Araña! Sin spoilers plis 😱',
+    members: {
+      users: [
         {
-          user: {
-            name: 'Simon',
-            email: '',
-            image: 'http://placehold.it/40',
-          },
+          id: '12reshseh34',
+          name: 'Mateo Alvarez',
+          email: 'alvarez.fing@fmail.com',
+          image: 'avatars/avatar4.jpg',
         },
         {
-          user: {
-            name: 'Andrea Gonzalez',
-            email: '',
-            image: 'http://placehold.it/40',
-          },
+          id: '12sgasg34',
+          name: 'Mateo Alvarez',
+          email: 'alvarez.fing@fmail.com',
+          image: 'avatars/avatar5.jpg',
         },
         {
-          user: {
-            name: 'Silvia',
-            email: '',
-            image: 'http://placehold.it/40',
-          },
+          id: '1asdfasdf234',
+          name: 'Mateo Alvarez',
+          email: 'alvarez.fing@fmail.com',
+          image: 'avatars/avatar6.jpg',
+        },
+        {
+          id: '12sfvb34',
+          name: 'Mateo Alvarez',
+          email: 'alvarez.fing@fmail.com',
+          image: 'avatars/avatar7.jpg',
+        },
+        {
+          id: '12sdva34',
+          name: 'Mateo Alvarez',
+          email: 'alvarez.fing@fmail.com',
+          image: 'avatars/avatar8.jpg',
         },
       ],
     },
   },
   {
-    content: {
-      id: 'sadfasdfdsaf',
-      owner: 'Mateo Alvarez',
-      title: 'Futbol 5 en el Galpon',
-      date: 'Mar. 12:00hs',
-      description: null,
-      members: [
+    id: 'sdfzx',
+    owner: {
+      id: '12awefwfeafw34',
+      name: 'Mateo Alvarez',
+      email: 'alvarez.fing@gmail.com',
+      image: 'http://placehold.it/40',
+    },
+    ownerId: 'ewfsdsfa',
+    title: 'Ir a un restaurant',
+    date: '2022-01-15 00:23:00',
+    description:
+      'Unas pizzas en Panda bar y despues nos vamos para la casa de Pedro!',
+    members: {
+      users: [
         {
-          user: {
-            name: 'Raul',
-            email: '',
-            image: 'http://placehold.it/40',
-          },
+          id: '1faafa234',
+          name: 'Mateo Alvarez',
+          email: 'alvarez.fing@fmail.com',
+          image: 'avatars/avatar9.jpg',
         },
         {
-          user: {
-            name: 'Maria',
-            email: '',
-            image: 'http://placehold.it/40',
-          },
+          id: '12ewafaef34',
+          name: 'Mateo Alvarez',
+          email: 'alvarez.fing@fmail.com',
+          image: 'avatars/avatar10.jpg',
         },
         {
-          user: {
-            name: 'Sofia',
-            email: '',
-            image: 'http://placehold.it/40',
-          },
+          id: 'eafwfa',
+          name: 'Mateo Alvarez',
+          email: 'alvarez.fing@fmail.com',
+          image: 'avatars/avatar11.jpg',
         },
       ],
     },
