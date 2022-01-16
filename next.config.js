@@ -4,7 +4,7 @@ module.exports = {
   async rewrites() {
     return [
       {
-        source: '/api/:option/:path*',
+        source: '/api/:option/:path',
         destination: process.env.CORS_URL,
       },
     ]
