@@ -6,7 +6,7 @@ import type { User } from 'types/user'
 
 import { ArrowIcon } from './ArrowIcon'
 
-export const UserMenu: React.FC<User> = ({ user }) => {
+export const UserMenu: React.FC<any> = ({ user }: any) => {
   const { name, image } = user
 
   return (

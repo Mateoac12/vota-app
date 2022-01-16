@@ -4,7 +4,7 @@ import { useSession } from 'next-auth/react'
 
 export const HandleLoginButton: React.FC = () => {
   const { data, status } = useSession()
-  const user: any = data?.user
+  const user = data?.user as any
 
   if (!status || status === 'loading') return <p>Cargando...</p>
   if (status === 'authenticated') return <UserMenu user={user} />
