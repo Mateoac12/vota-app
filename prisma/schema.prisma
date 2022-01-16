@@ -47,7 +47,28 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  post          Post[]
+  memberOfPost  MemberOfPost[]
 }
+
+model Post {
+  id            String     @id @default(cuid())
+  owner         User       @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  ownerId       String
+  title         String
+  date          DateTime
+  description   String?
+  members       MemberOfPost?
+}
+
+model MemberOfPost {
+  id            String     @id @default(cuid())
+  postId        String
+  usersId        String[]
+  post          Post       @relation(fields: [postId], references: [id], onDelete: Cascade)
+  users         User[]
+}
+
 
 model VerificationToken {
   identifier String
