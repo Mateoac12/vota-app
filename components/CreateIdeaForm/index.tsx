@@ -9,12 +9,15 @@ interface Props {
 
 export const CreateIdeaForm: React.FC<Props> = ({ setOpen }) => {
   const [loadingSubmit, setLoadingSubmit] = useState<boolean>(false)
-  const { state, handleChange } = useForm()
+  const { state, handleChange, handleCheckErrorForms, lineError } = useForm()
   const router = useRouter()
   const { handleSubmitIdea } = useCreateIdea()
 
   const handleCreateIdea = async (e: React.FormEvent) => {
     e.preventDefault()
+    const hasErrors = handleCheckErrorForms()
+    if (hasErrors) return
+
     setLoadingSubmit(true)
     await handleSubmitIdea(state)
     setLoadingSubmit(false)
@@ -64,6 +67,11 @@ export const CreateIdeaForm: React.FC<Props> = ({ setOpen }) => {
             onChange={handleChange}
           />
         </div>
+        {lineError && (
+          <p className='mb-4 text-red-900 bg-red-200 rounded-md px-2 py-1 text-sm'>
+            {lineError}
+          </p>
+        )}
         <button
           className={`px-8 py-1 mb-4 bg-green-600 text-white rounded-full shadow-md shadow-green-200 hover:shadow-lg hover:shadow-green-200 transition-shadow ${
             loadingSubmit &&
