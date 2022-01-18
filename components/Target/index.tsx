@@ -1,12 +1,5 @@
-import { Alert } from 'components/Alert'
-import { useAlert } from 'hooks/useAlert'
-import { useCheckIsMember } from 'hooks/useCheckIsMember'
-import { useIncludeInIdea } from 'hooks/useIncludeInIdea'
-import { useRouter } from 'next/router'
+import { ButtonTarget } from 'components/ButtonTarget'
 import { TargetProp } from 'types/target'
-
-import { WhatsappIcon } from './WhatsappIcon'
-
 interface Props {
   content: TargetProp
   falseInformation?: boolean
@@ -18,25 +11,6 @@ export const Target: React.FC<Props> = ({
 }) => {
   const { title, date, description, owner, members } = content
   const { users } = members
-
-  const router = useRouter()
-  const { alert, setAlert } = useAlert()
-  const { handleInluce } = useIncludeInIdea()
-  const { isMember, userId } = useCheckIsMember({ members })
-
-  const handleCopyText = () => {
-    navigator.clipboard.writeText(
-      `${window.location.origin}/idea/${content.id}`
-    )
-    setAlert('Link copiado correctamente 😁')
-  }
-
-  const handleSendInclude = async () => {
-    if (falseInformation) return
-    setAlert('¡Ya estas dentro! 🙌🏻')
-    await handleInluce({ postId: content.id, userToInclude: userId })
-    router.push(`/idea/${content.id}`)
-  }
 
   return (
     <>
@@ -54,26 +28,7 @@ export const Target: React.FC<Props> = ({
         <hr className='my-4' />
         <p>{description || 'Sin descripción...'}</p>
         <div className='flex justify-between items-center sticky top-full'>
-          {userId === owner.id ? (
-            <button
-              onClick={handleCopyText}
-              className='px-4 py-1 my-4 bg-green-600 text-white rounded-full shadow-md shadow-green-200 hover:shadow-lg hover:shadow-green-200 transition-shadow flex items-center gap-1'
-            >
-              <WhatsappIcon />
-              Copiar link
-            </button>
-          ) : (
-            <button
-              onClick={handleSendInclude}
-              disabled={isMember}
-              className={`px-8 py-1 my-4 bg-green-600 text-white rounded-full shadow-md shadow-green-200 hover:shadow-lg hover:shadow-green-200 transition-shadow ${
-                isMember &&
-                'opacity-50 cursor-not-allowed hover:shadow-md hover:shadow-green-200'
-              }`}
-            >
-              {isMember ? '¡Unido!' : '¡Unirse!'}
-            </button>
-          )}
+          <ButtonTarget content={content} falseInformation={falseInformation} />
           <div className='flex items-center'>
             <span className='mr-6 font-semibold text-green-600'>
               +{users.length}
@@ -89,7 +44,6 @@ export const Target: React.FC<Props> = ({
           </div>
         </div>
       </article>
-      {alert && <Alert>{alert}</Alert>}
     </>
   )
 }
