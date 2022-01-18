@@ -1,9 +1,8 @@
 import { Alert } from 'components/Alert'
 import { useAlert } from 'hooks/useAlert'
+import { useCheckIsMember } from 'hooks/useCheckIsMember'
 import { useIncludeInIdea } from 'hooks/useIncludeInIdea'
-import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
 import { TargetProp } from 'types/target'
 
 import { WhatsappIcon } from './WhatsappIcon'
@@ -17,15 +16,13 @@ export const Target: React.FC<Props> = ({
   content,
   falseInformation = false,
 }) => {
-  const router = useRouter()
-  const [isMember, setIsMember] = useState<boolean>(false)
-  const { data } = useSession()
-  const { alert, setAlert } = useAlert()
-  const { handleInluce } = useIncludeInIdea()
-  const userId = data?.user?.id
-
   const { title, date, description, owner, members } = content
   const { users } = members
+
+  const router = useRouter()
+  const { alert, setAlert } = useAlert()
+  const { handleInluce } = useIncludeInIdea()
+  const { isMember, userId } = useCheckIsMember({ members })
 
   const handleCopyText = () => {
     navigator.clipboard.writeText(
@@ -33,13 +30,6 @@ export const Target: React.FC<Props> = ({
     )
     setAlert('Link copiado correctamente 😁')
   }
-
-  useEffect(() => {
-    if (userId) {
-      const isMember = members.users.some((user) => user.id === userId)
-      setIsMember(isMember)
-    }
-  }, [members.users, userId])
 
   const handleSendInclude = async () => {
     if (falseInformation) return
