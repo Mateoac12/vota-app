@@ -1,7 +1,5 @@
 import { useSession } from 'next-auth/react'
-import { useState } from 'react'
 import { postIdea } from 'services/postIdea'
-import { TargetProp } from 'types/target'
 
 interface Content {
   title: string
@@ -10,7 +8,6 @@ interface Content {
 }
 
 export const useCreateIdea = () => {
-  const [posts, setPosts] = useState([] as TargetProp[])
   const { data } = useSession()
 
   const id = data?.user?.id || ''
@@ -18,7 +15,7 @@ export const useCreateIdea = () => {
   const handleSubmitIdea = async (content: Content) => {
     const { title, date, description } = content
 
-    const { newPost } = await postIdea({
+    await postIdea({
       paramsOfPost: {
         title,
         description,
@@ -26,12 +23,9 @@ export const useCreateIdea = () => {
         id,
       },
     })
-
-    setPosts([...posts, await newPost.json()])
   }
 
   return {
     handleSubmitIdea,
-    posts,
   }
 }

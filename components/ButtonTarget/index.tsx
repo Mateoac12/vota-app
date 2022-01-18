@@ -31,8 +31,6 @@ export const ButtonTarget: React.FC<Props> = ({
     setAlert('Link copiado correctamente 😁')
   }
 
-  console.log(userId)
-
   const handleSendInclude = async () => {
     if (falseInformation) return
     setAlert('¡Ya estas dentro! 🙌🏻')

@@ -20,6 +20,7 @@ export const CreateIdeaForm: React.FC<Props> = ({ setOpen }) => {
 
     setLoadingSubmit(true)
     await handleSubmitIdea(state)
+
     setLoadingSubmit(false)
     setOpen(false)
     router.push('/dashboard')

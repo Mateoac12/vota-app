@@ -10,8 +10,6 @@ interface Props {
 export const postIdea = async ({ paramsOfPost }: Props) => {
   const { title, description, date, id } = paramsOfPost
 
-  console.log(id)
-
   const newPost = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/post/create`,
     {

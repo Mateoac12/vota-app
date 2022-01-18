@@ -1,5 +1,4 @@
 import { includeInIdea } from 'services/includeInIdea'
-import { User } from 'types/user'
 
 interface Props {
   postId: string
@@ -9,6 +8,7 @@ interface Props {
 export const useIncludeInIdea = () => {
   const handleInluce = async ({ postId, userToInclude }: Props) => {
     const ideaInclude = await includeInIdea({ postId, userToInclude })
+    console.log({ ideaInclude })
   }
 
   return {

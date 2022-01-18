@@ -1,12 +1,10 @@
+import { ListOfIdeas } from 'components/ListOfIdeas'
 import { PanelCreateIdea } from 'components/PanelCreatIdea'
 import { PanelIncludeIdea } from 'components/PanelIncludeIdea'
-import { Target } from 'components/Target'
-import { useSaveGlobalIdeas } from 'hooks/useSaveGlobalIdeas'
 import { GetServerSideProps, NextPage } from 'next'
 import { getSession } from 'next-auth/react'
 import Head from 'next/head'
 import { prisma } from 'prisma/index'
-import { useEffect } from 'react'
 import { TargetProp } from 'types/target'
 
 interface Props {
@@ -14,10 +12,6 @@ interface Props {
 }
 
 const Dashboard: NextPage<Props> = ({ listPosts }) => {
-  const { ideas, setIdeas } = useSaveGlobalIdeas()
-
-  useEffect(() => setIdeas(listPosts))
-
   return (
     <>
       <Head>
@@ -39,10 +33,7 @@ const Dashboard: NextPage<Props> = ({ listPosts }) => {
           <PanelIncludeIdea />
         </div>
 
-        <section className='mt-10 flex justify-center gap-4 flex-wrap mb-40 px-4'>
-          {ideas &&
-            ideas.map((post) => <Target key={post.id} content={post} />)}
-        </section>
+        <ListOfIdeas listPosts={listPosts} />
       </main>
     </>
   )
