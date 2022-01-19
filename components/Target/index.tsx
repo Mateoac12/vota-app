@@ -44,13 +44,15 @@ export const Target: React.FC<Props> = ({
               +{users.length}
             </span>
             {users &&
-              users.map((user) => (
-                <img
-                  key={user.id}
-                  src={user.image}
-                  className='rounded-full w-8 h-8 outline outline-2 outline-white -ml-4'
-                />
-              ))}
+              users
+                .slice(0, 5)
+                .map((user) => (
+                  <img
+                    key={user.id}
+                    src={user.image}
+                    className='rounded-full w-8 h-8 outline outline-2 outline-white -ml-4'
+                  />
+                ))}
           </div>
         </div>
       </article>
