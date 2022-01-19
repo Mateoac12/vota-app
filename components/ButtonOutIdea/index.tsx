@@ -2,6 +2,7 @@ import { Alert } from 'components/Alert'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
+import { deleteIdea } from 'services/deleteIdea'
 import { outIdea } from 'services/outIdea'
 import { TargetProp } from 'types/target'
 import { TrashIcon } from './TrashIcon'
@@ -30,6 +31,12 @@ export const ButtonOutIdea: React.FC<Props> = ({
     router.push('/')
   }
 
+  const handleDeleteIdea = async () => {
+    setAlertMessage('Eliminando idea...')
+    await deleteIdea({ postId })
+    router.push('/')
+  }
+
   if (
     falseInformation ||
     !content.members.users.some((user) => user.id === userId)
@@ -39,7 +46,10 @@ export const ButtonOutIdea: React.FC<Props> = ({
   if (userId === ownerIdea)
     return (
       <>
-        <button className='px-2 py-2 rounded-full text-white bg-red-400 shadow-md shadow-red-200 hover:shadow-lg hover:shadow-red-200 transition-shadow'>
+        <button
+          onClick={handleDeleteIdea}
+          className='px-2 py-2 rounded-full text-white bg-red-400 shadow-md shadow-red-200 hover:shadow-lg hover:shadow-red-200 transition-shadow'
+        >
           <TrashIcon />
         </button>
         {alertMessage && <Alert>{alertMessage}</Alert>}
