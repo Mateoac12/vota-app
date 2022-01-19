@@ -44,15 +44,15 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const listPosts = await prisma.post.findMany({
     where: {
-      ownerId: session?.user?.id,
-      /* members: {
-        usersId: {
-          has: session?.user?.id,
+      members: {
+        users: {
+          some: {
+            id: session?.user?.id,
+          },
         },
-      }, */
+      },
     },
     include: {
-      // members: true,
       owner: true,
       members: {
         include: {
