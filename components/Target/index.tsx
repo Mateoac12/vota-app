@@ -1,3 +1,4 @@
+import { ButtonOutIdea } from 'components/ButtonOutIdea'
 import { ButtonTarget } from 'components/ButtonTarget'
 import { TargetProp } from 'types/target'
 interface Props {
@@ -28,7 +29,16 @@ export const Target: React.FC<Props> = ({
         <hr className='my-4' />
         <p>{description || 'Sin descripción...'}</p>
         <div className='flex justify-between items-center sticky top-full'>
-          <ButtonTarget content={content} falseInformation={falseInformation} />
+          <div className='flex items-center gap-2'>
+            <ButtonTarget
+              content={content}
+              falseInformation={falseInformation}
+            />
+            <ButtonOutIdea
+              content={content}
+              falseInformation={falseInformation}
+            />
+          </div>
           <div className='flex items-center'>
             <span className='mr-6 font-semibold text-green-600'>
               +{users.length}
