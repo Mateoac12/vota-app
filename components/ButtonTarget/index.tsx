@@ -38,7 +38,7 @@ export const ButtonTarget: React.FC<Props> = ({
     router.push(`/idea/${content.id}`)
   }
 
-  if (typeof userId === 'undefined')
+  if (typeof userId === 'undefined' && !falseInformation)
     return (
       <div className='my-4'>
         <p className='my-1 text-sm'>Inicia sesión para unirte</p>
